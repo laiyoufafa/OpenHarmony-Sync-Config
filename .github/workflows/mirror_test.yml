@@ -23,7 +23,8 @@ jobs:
         dst: github/laiyoufafa
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.HUB_TOKEN }}
-        account_type: user
+        src_account_type: org
+        dst_account_type: user
         timeout: 600
         force_update: true
      
