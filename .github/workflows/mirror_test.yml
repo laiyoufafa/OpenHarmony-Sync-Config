@@ -8,7 +8,7 @@ on:
     branches: [ master ]
   schedule:
     # Runs at 01:00 UTC (9:00 AM Beijing) every day
-    - cron:  '5 1,9 * * *'
+    - cron:  '0 1,10 * * *'
 
 jobs:
   build:
@@ -19,13 +19,14 @@ jobs:
     - name: Mirror the Gitee organization repos to Github.
       uses: Yikun/hub-mirror-action@v1.0
       with:
-        src: gitee/git-laiyf-net
+        src: gitee/openharmony
         dst: github/laiyoufafa
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.HUB_TOKEN }}
         account_type: user
         timeout: 600
-        static_list: "kernel_linux_build,security_crypto_framework,mirror_test"
+        force_update: true
+     
 
     - name: Debug repo owner
       run: |
