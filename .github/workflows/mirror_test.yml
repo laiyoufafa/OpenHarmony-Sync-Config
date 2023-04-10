@@ -8,7 +8,7 @@ on:
     branches: [ master ]
   schedule:
     # Runs at 01:00 UTC (9:00 AM Beijing) every day
-    - cron:  '45 1,8 * * *'
+    - cron:  '5 1,9 * * *'
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
         dst_token:  ${{ secrets.HUB_TOKEN }}
         account_type: user
         timeout: 600
-        debug: true
+        static_list: "kernel_linux_build,security_crypto_framework,mirror_test"
 
     - name: Debug repo owner
       run: |
