@@ -1,23 +1,33 @@
+name: Gitee repos mirror periodic job
+
 on:
-  push:
-    # delete this item if you don't want to trigger this workflow when modify this repo
-    branches: master
+  pull_request:
+    paths:
+    - '.github/workflows/mirror_test.yml'
+    # Runs at every pull requests submitted in master branch 
+    branches: [ master ]
   schedule:
-    # * is a special character in YAML so you have to quote this string
-    # UTC 17:00 -> CST (China) 1:00, see https://datetime360.com/cn/utc-cst-china-time/
-    - cron: '0 17 * * *'
-name: Mirror GitHub Auto Queried Repos to Gitee
+    # Runs at 01:00 UTC (9:00 AM Beijing) every day
+    - cron:  '0 1 * * *'
+
 jobs:
-  run:
-    name: Sync-GitHub-to-Gitee
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Mirror the Github repos to Gitee.
-      uses: Yikun/hub-mirror-action@master
+
+    - name: Mirror the Gitee organization repos to Github.
+      uses: Yikun/hub-mirror-action@v1.0
       with:
-        src: github/ShixiangWang
-        dst: gitee/ShixiangWang
+        src: gitee/git-laiyf-net
+        dst: github/laiyoufafa
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        dst_token: ${{ secrets.GITEE_TOKEN }}
-        mappings: ".github=>github"
-        force_update: true
+        dst_token:  ${{ secrets.HUB_TOKEN }}
+        account_type: user
+        timeout: 600
+        debug: true
+
+    - name: Debug repo owner
+      run: |
+        echo ${{ github.repository_owner }}
+        echo ${{ github.actor }}
