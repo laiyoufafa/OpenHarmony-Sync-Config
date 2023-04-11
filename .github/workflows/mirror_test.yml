@@ -19,16 +19,12 @@ jobs:
     - name: Mirror the Gitee organization repos to Github.
       uses: Yikun/hub-mirror-action@v1.0
       with:
-        src: gitee/sorosyang123
+        src: gitee/openharmony
         dst: github/laiyoufafa
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.HUB_TOKEN }}
-        account_type: user
+        src_account_type: org
+        dst_account_type: user
         timeout: 600
         force_update: true
-     
-
-    - name: Debug repo owner
-      run: |
-        echo ${{ github.repository_owner }}
-        echo ${{ github.actor }}
+        debug: true
