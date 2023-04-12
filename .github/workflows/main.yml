@@ -37,7 +37,7 @@ jobs:
     - name: Mirror the Gitee organization repos to Github.
       uses: Yikun/hub-mirror-action@v1.2
       with:
-        src: gitee/openharmony
+        src: gitee/sorosyang123
         dst: github/laiyoufafa
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.HUB_TOKEN }}
