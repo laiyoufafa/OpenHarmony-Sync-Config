@@ -8,7 +8,7 @@ on:
     branches: [ master ]
   schedule:
     # Runs at 01:00 UTC (9:00 AM Beijing) every day
-    - cron:  '40 6 * * *'
+    - cron:  '45 6,13,20 * * *'
 
 jobs:
   build:
