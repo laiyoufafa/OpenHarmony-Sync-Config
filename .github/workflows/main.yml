@@ -41,8 +41,7 @@ jobs:
         dst: github/laiyoufafa
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.HUB_TOKEN }}
-        src_account_type: org
-        dst_account_type: user
+        account_type: user
         timeout: 600
         static_list: '${{ steps.info.outputs.result }}'
         cache_path: /github/workspace/hub-mirror-cache
