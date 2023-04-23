@@ -3,7 +3,7 @@ name: Gitee repos mirror periodic job
 on:
   pull_request:
     paths:
-    - '.github/workflows/mirror_test.yml'
+    - '.github/workflows/repo-mirror.yml'
     # Runs at every pull requests submitted in master branch 
     branches: [ master ]
   schedule:
